@@ -1,11 +1,11 @@
 import clevertap from "clevertap-web-sdk";
 import { format } from "date-fns";
+import { getAnalytics } from "firebase/analytics";
+import { initializeApp } from "firebase/app";
 import { AnimatePresence, motion } from "framer-motion";
 import { Rocket, Terminal, Zap } from "lucide-react";
 import { useEffect, useState } from "react";
 import { z } from "zod";
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { FunctionCard } from "./components/FunctionCard";
 import { InputField } from "./components/InputField";
 import { ResultPanel } from "./components/ResultPanel";
@@ -54,7 +54,7 @@ function App() {
   useEffect(() => {
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
+    getAnalytics(app);
     // Initialize CleverTap
     clevertap.init("TEST-468-488-R47Z");
     clevertap.spa = true;
